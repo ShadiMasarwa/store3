@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Products from "./Components/Products";
+import Sidebar from "./Components/Sidebar";
+import GlobalContext from "./Hooks/GlobalContext";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [storeProducts, setStoreProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("https://dummyjson.com/products?limit=100")
+      .then((response) => response.json())
+      .then((json) => setStoreProducts(json.products));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <GlobalContext.Provider value={{ storeProducts, setStoreProducts }}>
+        <Products />
+        {/* <Sidebar /> */}
+      </GlobalContext.Provider>
     </div>
   );
 }
