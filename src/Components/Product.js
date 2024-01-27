@@ -10,7 +10,7 @@ const Product = ({
 }) => {
   return (
     <div className="col-xl-3 col-md-6 col-sm-12">
-      <div className="card w-20 ">
+      <div className="card w-20 m-2">
         <img
           src={images[0]}
           className="card-img-top p-2 "

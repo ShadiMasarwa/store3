@@ -14,10 +14,10 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className="d-flex">
       <GlobalContext.Provider value={{ storeProducts, setStoreProducts }}>
+        <Sidebar />
         <Products />
-        {/* <Sidebar /> */}
       </GlobalContext.Provider>
     </div>
   );
