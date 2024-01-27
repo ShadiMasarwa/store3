@@ -11,7 +11,11 @@ const Products = () => {
     <div className="container">
       <div className="row">
         {storeProducts.map((el, i) =>
-          i + 1 <= showItems ? <Product {...el} key={el.id} /> : ""
+          i + 1 <= showItems ? (
+            <Product {...el} sender="main" key={el.id} />
+          ) : (
+            ""
+          )
         )}
       </div>
       <div className="d-flex justify-content-center">
@@ -23,7 +27,7 @@ const Products = () => {
             More...
           </button>
         ) : (
-          ""
+          "No more products"
         )}
       </div>
     </div>
